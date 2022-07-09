@@ -37,6 +37,7 @@ const operators = document.getElementsByClassName(`operator`);
 const display = document.getElementById(`display`);
 const clearbutton = document.getElementById(`clear`);
 const history = document.getElementById(`history`);
+const equals = document.getElementById(`result`);
 
 for (i=0 ; i < numberbuttons.length; i++){
     numberbuttons[i].addEventListener(`click`, function(e){
@@ -56,6 +57,7 @@ for (i=0 ; i < operators.length ; i++){
             history.textContent += display.textContent+e.target.textContent;
         }
         clearDisplay();
+
     })
 }
 
@@ -80,4 +82,18 @@ function hasOperator(string){
         }
     }
     return false;
+}
+
+equals.addEventListener(`click`, getResult);
+
+function getResult(){
+    let operator = hasOperator(history.textContent);
+    if(operator == false){
+        history.textContent += display.textContent;
+        clearDisplay();
+    } else {
+        let intA = history.textContent.slice(0,-1);
+        display.textContent = operate(operator.toString(),intA,display.textContent);
+        history.textContent = '';
+    }
 }

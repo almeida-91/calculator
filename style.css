@@ -7,7 +7,36 @@ body{
 
 }
 
+#display{
+    display: flex;
+    margin: 50px 10px 50px 0px;
+    height: 20px;
+    width: 100%;
+    padding : 10px;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    justify-content: flex-end;
+    align-items:flex-end ;
+    flex:1;
+}
+
 .number{
     margin: 5px;
     padding: 10px;
+}
+
+.container{
+    display: flex;
+    width: 100%;
+}
+
+#history{
+    margin: 50px 0px 50px 10px;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    flex:0;
+    justify-content: flex-start;
+    align-items: flex-start;
 }

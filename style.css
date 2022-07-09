@@ -40,3 +40,8 @@ body{
     justify-content: flex-start;
     align-items: flex-start;
 }
+
+#decimal{
+    margin: 5px;
+    padding: 10px;
+}

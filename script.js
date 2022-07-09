@@ -20,6 +20,7 @@ function power(intA, intB){
 
 function operate(operator, intA, intB){
     operator = operator.toString();
+    if (operator == '/' && intB == 0) return "ERROR";
     switch(operator){
         case `+`:
             return add(intA, intB);
@@ -29,6 +30,8 @@ function operate(operator, intA, intB){
             return multiply(intA, intB);
         case `/`:
             return divide(intA, intB);
+        case `^`:
+            return power(intA, intB);
     }
 }
 
@@ -38,9 +41,11 @@ const display = document.getElementById(`display`);
 const clearbutton = document.getElementById(`clear`);
 const history = document.getElementById(`history`);
 const equals = document.getElementById(`result`);
+const decimal = document.getElementById(`decimal`);
 
 for (i=0 ; i < numberbuttons.length; i++){
     numberbuttons[i].addEventListener(`click`, function(e){
+        if(display.textContent == 'ERROR') clearDisplay();
         display.textContent += e.target.textContent;
     });
 }
@@ -49,8 +54,10 @@ for (i=0 ; i < operators.length ; i++){
     operators[i].addEventListener(`click`, function(e){
         let operator = hasOperator(history.textContent);
         if(operator == false){
+            if(display.textContent == 'ERROR') clearDisplay();
             history.textContent += display.textContent+e.target.textContent;
         } else {
+            if(display.textContent == 'ERROR') clearDisplay();
             let intA = history.textContent.slice(0,-1);
             display.textContent = operate(operator.toString(),intA,display.textContent);
             history.textContent = '';
@@ -77,7 +84,7 @@ function clear(){
 function hasOperator(string){
     string = string.split('');
     for(let i=0 ; i<string.length ; i++){
-        if (string[i]== `+` || string[i] == '-' || string[i] == '*' || string[i] == '/'){
+        if (string[i]== `+` || string[i] == '-' || string[i] == '*' || string[i] == '/' || string[i] == '^'){
             return string[i];
         }
     }
@@ -97,3 +104,17 @@ function getResult(){
         history.textContent = '';
     }
 }
+
+function isDecimal(string){
+    string = string.split('')
+    for (i = 0 ; i<string.length ; i++){
+        if (string[i] == '.') return true;
+    }
+    return false;
+}
+
+decimal.addEventListener(`click`, function (e){
+    if(!isDecimal(display.textContent)){
+        display.textContent += `.`;
+    }       
+})

@@ -7,18 +7,21 @@ function subtract(intA, intB){
 }
 
 function multiply(intA, intB){
+    if (intB == "") intB = 1;
     return intA * intB;
 }
 
-function divide(intA, intB){
+function divide(intA, intB){    
     return intA / intB;
 }
 
 function power(intA, intB){
+    if (intB == '') intB = 1;
     return intA ** intB;
 }
 
 function operate(operator, intA, intB){
+    if (operator == '/' && intB == "") return divide(intA,1);
     if (operator == '/' && intB == 0) return "ERROR";
     switch(operator){
         case `+`:
@@ -44,7 +47,7 @@ const decimal = document.getElementById(`decimal`);
 
 for (i=0 ; i < numberbuttons.length; i++){
     numberbuttons[i].addEventListener(`click`, function(e){
-        if(display.textContent == 'ERROR') clearDisplay();
+        if(display.textContent == 'ERROR') clear();
         display.textContent += e.target.textContent;
     });
 }
@@ -68,7 +71,6 @@ for (i=0 ; i < operators.length ; i++){
             history.textContent += display.textContent+e.target.textContent;
         }
         clearDisplay();
-
     })
 }
 
@@ -98,6 +100,10 @@ function hasOperator(string){
 equals.addEventListener(`click`, getResult);
 
 function getResult(){
+    if(display.textContent == 'ERROR'){
+        clear();
+        return;
+    }
     let operator = hasOperator(history.textContent);
     if(operator == false && history.textContent != ''){
         display.textContent = history.textContent;

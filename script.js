@@ -19,7 +19,6 @@ function power(intA, intB){
 }
 
 function operate(operator, intA, intB){
-    operator = operator.toString();
     if (operator == '/' && intB == 0) return "ERROR";
     switch(operator){
         case `+`:
@@ -53,13 +52,18 @@ for (i=0 ; i < numberbuttons.length; i++){
 for (i=0 ; i < operators.length ; i++){
     operators[i].addEventListener(`click`, function(e){
         let operator = hasOperator(history.textContent);
-        if(operator == false){
+        if(operator == false && history.textContent != ''){
+            history.textContent += e.target.textContent; 
+            clearDisplay();
+        }
+        else if(operator == false){
             if(display.textContent == 'ERROR') clearDisplay();
-            history.textContent += display.textContent+e.target.textContent;
+            history.textContent += display.textContent + e.target.textContent;
         } else {
             if(display.textContent == 'ERROR') clearDisplay();
             let intA = history.textContent.slice(0,-1);
-            display.textContent = operate(operator.toString(),intA,display.textContent);
+            let intB = display.textContent;
+            display.textContent = operate(operator.toString(),intA,intB);
             history.textContent = '';
             history.textContent += display.textContent+e.target.textContent;
         }
@@ -95,8 +99,10 @@ equals.addEventListener(`click`, getResult);
 
 function getResult(){
     let operator = hasOperator(history.textContent);
-    if(operator == false){
-        history.textContent += display.textContent;
+    if(operator == false && history.textContent != ''){
+        display.textContent = history.textContent;
+    } else if(operator == false && history.textContent =='') {
+        history.textContent = display.textContent;
         clearDisplay();
     } else {
         let intA = history.textContent.slice(0,-1);

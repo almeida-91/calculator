@@ -23,17 +23,19 @@ function power(intA, intB){
 function operate(operator, intA, intB){
     if (operator == '/' && intB == "") return divide(intA,1);
     if (operator == '/' && intB == 0) return "ERROR";
+    initialValue = '';
+    result = NaN;
     switch(operator){
         case `+`:
-            return add(intA, intB);
+            return result = add(intA, intB);
         case `-`:
-            return subtract(intA, intB);
+            return result = subtract(intA, intB);
         case `*`:
-            return multiply(intA, intB);
+            return result = multiply(intA, intB);
         case `/`:
-            return divide(intA, intB);
+            return result = divide(intA, intB);
         case `^`:
-            return power(intA, intB);
+            return result = power(intA, intB);
     }
 }
 
@@ -44,47 +46,48 @@ const clearbutton = document.getElementById(`clear`);
 const history = document.getElementById(`history`);
 const equals = document.getElementById(`result`);
 const decimal = document.getElementById(`decimal`);
+let result = NaN;
+let initialValue = '';
+let operator = '';
 
 for (i=0 ; i < numberbuttons.length; i++){
     numberbuttons[i].addEventListener(`click`, function(e){
-        if(display.textContent == 'ERROR') clear();
+        if(display.textContent == 'ERROR') clearDisplay();
+        if(result == display.textContent){
+            clear();
+        }
         display.textContent += e.target.textContent;
     });
 }
 
 for (i=0 ; i < operators.length ; i++){
     operators[i].addEventListener(`click`, function(e){
-        let operator = hasOperator(history.textContent);
-        if(operator == false && history.textContent != ''){
-            history.textContent += e.target.textContent; 
-            clearDisplay();
-        }
-        else if(operator == false){
-            if(display.textContent == 'ERROR') clearDisplay();
-            history.textContent += display.textContent + e.target.textContent;
-        } else {
-            if(display.textContent == 'ERROR') clearDisplay();
-            let intA = history.textContent.slice(0,-1);
-            let intB = display.textContent;
-            display.textContent = operate(operator.toString(),intA,intB);
-            history.textContent = '';
-            history.textContent += display.textContent+e.target.textContent;
-        }
-        clearDisplay();
-    })
-}
+        if (initialValue == '') initialValue = display.textContent;
+        if (initialValue == 'ERROR') clearDisplay();
+        if(operator == ''){
+            operator = e.target.textContent;
+            clear();
+        } else if(result == display.textContent){
+            operator = e.target.textContent;
+            display.textContent = '';  
+        } else getResult();
+    });
+};
 
-clear();
+clearDisplay();
 
-clearbutton.addEventListener(`click`, clear);
+clearbutton.addEventListener(`click`, clearDisplay);
 
 function clearDisplay(){
+    result = NaN;
+    initialValue = '';
+    operator = '';
     display.textContent = '';
 }
 
 function clear(){
     display.textContent = '';
-    history.textContent = '';
+    //history.textContent = '';
 }
 
 function hasOperator(string){
@@ -100,20 +103,23 @@ function hasOperator(string){
 equals.addEventListener(`click`, getResult);
 
 function getResult(){
+    if (initialValue == '') initialValue = display.textContent;
+    console.log(initialValue);
+    console.log(operator);
+    console.log(display.textContent);
     if(display.textContent == 'ERROR'){
-        clear();
+        clearDisplay();
         return;
     }
-    let operator = hasOperator(history.textContent);
-    if(operator == false && history.textContent != ''){
-        display.textContent = history.textContent;
-    } else if(operator == false && history.textContent =='') {
-        history.textContent = display.textContent;
+    if(operator == false && initialValue != ''){
+        display.textContent = initialValue;
+    } else if(operator == false && initialValue =='') {
+        initialValue = display.textContent;
         clearDisplay();
     } else {
-        let intA = history.textContent.slice(0,-1);
-        display.textContent = operate(operator.toString(),intA,display.textContent);
-        history.textContent = '';
+        display.textContent = operate(operator.toString(),initialValue,display.textContent);
+        initialValue = '';
+        result = display.textContent;
     }
 }
 

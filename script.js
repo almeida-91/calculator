@@ -20,21 +20,26 @@ function power(intA, intB){
     return intA ** intB;
 }
 
-function operate(operator, intA, intB){
-    if (operator == '/' && intB == "") return divide(intA,1);
-    if (operator == '/' && intB == 0) return "ERROR";
+function operate(operatorA, intA, intB){
+    if (operatorA == '/' && intB == "") return divide(intA,1);
+    if (operatorA == '/' && intB == 0) return "ERROR";
     initialValue = '';
     result = NaN;
-    switch(operator){
+    switch(operatorA){
         case `+`:
+            operator = '';
             return result = add(intA, intB);
         case `-`:
+            operator = '';
             return result = subtract(intA, intB);
         case `*`:
+            operator = '';
             return result = multiply(intA, intB);
         case `/`:
+            operator = '';
             return result = divide(intA, intB);
         case `^`:
+            operator = '';
             return result = power(intA, intB);
     }
 }
@@ -62,8 +67,11 @@ for (i=0 ; i < numberbuttons.length; i++){
 
 for (i=0 ; i < operators.length ; i++){
     operators[i].addEventListener(`click`, function(e){
-        if (initialValue == '') initialValue = display.textContent;
         if (initialValue == 'ERROR') clearDisplay();
+        if (display.textContent == result){
+            initialValue = display.textContent;
+        }
+        if (initialValue == '') initialValue = display.textContent;
         if(operator == ''){
             operator = e.target.textContent;
             clear();

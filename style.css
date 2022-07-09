@@ -2,32 +2,63 @@ html, body{
     margin: 0;
     width: 100%;
     text-align: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+
+h1{
+    font-family: 'Courier New', Courier, monospace;
+    background-color: black;
+    color: rgb(255, 153, 0);
+}
+
 body{
+
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    align-content: center;
 }
 
-#display{
+#display{ 
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-large;
     flex-direction: row;
-    margin: 50px 10px 50px 0px;
+    margin: auto;
     height: 20px;
-    width: 50vh;
-    padding : 10px;
+    width: 40vh;
+    padding: 10px;
     border: 1px solid black;
     border-right: 1px solid black;
     border-bottom: 1px solid black;
     justify-self: flex-end;
     justify-content: right;
-    align-items:right ;
+    align-items: right;
     align-content: flex-end;
-    flex:1;
+    flex: 1;
+    background-color: black;
+    color: rgb(255, 153, 0);
+    text-align: right;
+    font-weight: 700;
+    /* border-color: white; */
+    border: 2px solid;
+    border-radius: 20px;
+    margin: 10px;
+    height: 5vh;
 }
 
 .number{
-    margin: 5px;
-    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+
+    margin: auto;
+    padding: 20px;
+    background-color: gray;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    flex: 1;
+    font-weight: 700;
+    font-size: large;
 }
 
 #history{
@@ -42,13 +73,115 @@ body{
 }
 
 #decimal{
-    margin: 5px;
-    padding: 10px;
+    margin: auto;
+    padding: 20px;
+    background-color: rgb(255, 153, 0);
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    flex: 1;
+    font-weight: 700;
+    font-size: large;
+    margin: 0px;
 }
 
 .container{
     display: flex;
     margin:auto;
-    /*justify-self: center;*/
+}
 
+.buttonContainer{
+    background-color: black;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding : 10px;
+    border: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    border-radius: 20px;
+    justify-self: flex-end;
+    justify-content: right;
+    align-items:right ;
+    align-content: flex-end;
+    flex:1;
+    background-color: black;
+    color:greenyellow;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.decimal{
+    padding: 20px 22.5px;
+    background-color: rgb(255, 153, 0);
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    flex: 1;
+    font-weight: 700;
+    font-size: large;
+    margin: 0px;
+}
+
+.operator{
+    flex-wrap: nowrap;
+    margin: 0px;
+    padding: 20px;
+    background-color: gray;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: rgb(255, 153, 0);
+    font-weight: 700;
+    font-size: large;
+}
+
+#clear{
+    padding: 19px 5px;
+    margin: 0px;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: rgb(255, 153, 0);
+    font-weight: 700;
+    font-size: large;
+}
+
+#result{
+    flex-wrap: nowrap;
+    margin: 0px;
+    padding: 20px;
+    background-color: gray;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: rgb(255, 153, 0);
+    font-weight: 700;
+    font-size: large;
+}
+
+#zero{
+    flex:1;
+    flex-wrap: nowrap;
+    margin: 0px;
+    padding: 20px 75px 20px 82px;
+    background-color: gray;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: rgb(255, 153, 0);
+    font-weight: 700;
+    font-size: large;
+}
+
+.buttonContainer div{
+    display: flex;
+    align-items: stretch;
 }

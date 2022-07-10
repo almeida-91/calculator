@@ -103,7 +103,6 @@ function clearDisplay(){
 
 function clear(){
     display.textContent = '';
-    //history.textContent = '';
 }
 
 function hasOperator(string){
@@ -133,7 +132,9 @@ function getResult(){
         initialValue = display.textContent;
         clearDisplay();
     } else {
-        display.textContent = operate(operator.toString(),initialValue,display.textContent);
+        result = operate(operator.toString(),initialValue,display.textContent);
+        result = result.toFixed(5);
+        display.textContent = result;
         initialValue = '';
         result = display.textContent;
     }

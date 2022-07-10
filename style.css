@@ -2,74 +2,52 @@ html, body{
     margin: 0;
     width: 100%;
     text-align: center;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: monospace;
 }
 
 h1{
-    font-family: 'Courier New', Courier, monospace;
+    font-family:monospace;
     background-color: black;
-    color: rgb(255, 153, 0);
+    color: rgb(255, 255, 255);
+    background-color: gray;
+
 }
 
 body{
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
+    background-color: gray;
 }
 
 #display{ 
-    font-family: 'Courier New', Courier, monospace;
-    font-size: x-large;
+    font-family: monospace;
+    font-size: xx-large;
     flex-direction: row;
     margin: auto;
+    margin-bottom: 0px;
     height: 20px;
-    width: 40vh;
+    width: 204px;
     padding: 10px;
-    border: 1px solid black;
-    border-right: 1px solid black;
-    border-bottom: 1px solid black;
     justify-self: flex-end;
     justify-content: right;
     align-items: right;
     align-content: flex-end;
     flex: 1;
-    background-color: black;
+    background-color: rgb(65, 65, 65);
     color: rgb(255, 153, 0);
     text-align: right;
     font-weight: 700;
     /* border-color: white; */
-    border: 2px solid;
-    border-radius: 20px;
-    margin: 10px;
+    border: 2px solid white;
     height: 5vh;
 }
 
 .number{
-    font-family: 'Courier New', Courier, monospace;
-
     margin: auto;
     padding: 20px;
     background-color: gray;
     color: white;
-    border: 1px solid black;
-    border-radius: 5px;
     flex: 1;
     font-weight: 700;
     font-size: large;
-}
-
-#history{
-    margin: 50px 0px 50px 10px;
-    border-top: 1px solid black;
-    border-left: 1px solid black;
-    border-bottom: 1px solid black;
-    justify-content: flex-start;
-    align-items: flex-start;
-    width: 100%;
-    flex: 0;
 }
 
 #decimal{
@@ -77,12 +55,10 @@ body{
     padding: 20px;
     background-color: rgb(255, 153, 0);
     color: white;
-    border: 1px solid black;
-    border-radius: 5px;
-    flex: 1;
     font-weight: 700;
     font-size: large;
     margin: 0px;
+    width: 57px;
 }
 
 .container{
@@ -91,7 +67,7 @@ body{
 }
 
 .buttonContainer{
-    background-color: black;
+    background-color: gray;
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
@@ -100,44 +76,25 @@ body{
 }
 
 .calculator{
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: monospace;
     padding : 10px;
-    border: 1px solid black;
-    border-right: 1px solid black;
-    border-bottom: 1px solid black;
-    border-radius: 20px;
     justify-self: flex-end;
     justify-content: right;
     align-items:right ;
     align-content: flex-end;
     flex:1;
-    background-color: black;
-    color:greenyellow;
+    background-color: gray;
     display: flex;
     flex-direction: column;
+
 }
 
-
-.decimal{
-    padding: 20px 22.5px;
-    background-color: rgb(255, 153, 0);
-    color: white;
-    border: 1px solid black;
-    border-radius: 5px;
-    flex: 1;
-    font-weight: 700;
-    font-size: large;
-    margin: 0px;
-}
 
 .operator{
-    flex-wrap: nowrap;
     margin: 0px;
     padding: 20px;
     background-color: gray;
     color: white;
-    border: 1px solid black;
-    border-radius: 5px;
     background-color: rgb(255, 153, 0);
     font-weight: 700;
     font-size: large;
@@ -147,8 +104,6 @@ body{
     padding: 19px 5px;
     margin: 0px;
     color: white;
-    border: 1px solid black;
-    border-radius: 5px;
     background-color: rgb(255, 153, 0);
     font-weight: 700;
     font-size: large;
@@ -158,30 +113,29 @@ body{
     flex-wrap: nowrap;
     margin: 0px;
     padding: 20px;
-    background-color: gray;
     color: white;
-    border: 1px solid black;
-    border-radius: 5px;
     background-color: rgb(255, 153, 0);
     font-weight: 700;
     font-size: large;
 }
 
 #zero{
-    flex:1;
     flex-wrap: nowrap;
     margin: 0px;
-    padding: 20px 75px 20px 82px;
-    background-color: gray;
     color: white;
-    border: 1px solid black;
-    border-radius: 5px;
     background-color: rgb(255, 153, 0);
     font-weight: 700;
     font-size: large;
+    width: 171px;
 }
 
 .buttonContainer div{
     display: flex;
     align-items: stretch;
+} 
+
+button{
+    border: 2px solid rgb(255, 255, 255);
+    width: 57px;
+    height: 63px;
 }

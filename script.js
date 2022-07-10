@@ -57,9 +57,11 @@ let operator = '';
 
 for (i=0 ; i < numberbuttons.length; i++){
     numberbuttons[i].addEventListener(`click`, function(e){
+        if (initialValue == 'ERROR') clearDisplay();
         if(display.textContent == 'ERROR') clearDisplay();
         if(result == display.textContent){
             clear();
+            result = NaN;
         }
         display.textContent += e.target.textContent;
     });
@@ -72,13 +74,19 @@ for (i=0 ; i < operators.length ; i++){
             initialValue = display.textContent;
         }
         if (initialValue == '') initialValue = display.textContent;
+        if (operator == '' && display.textContent != '') initialValue = display.textContent;
         if(operator == ''){
             operator = e.target.textContent;
             clear();
         } else if(result == display.textContent){
             operator = e.target.textContent;
             display.textContent = '';  
-        } else getResult();
+        } else {
+            result = NaN;
+            getResult();
+            initialValue = display.textContent;
+            operator = e.target.textContent;
+        }
     });
 };
 
@@ -112,9 +120,9 @@ equals.addEventListener(`click`, getResult);
 
 function getResult(){
     if (initialValue == '') initialValue = display.textContent;
-    console.log(initialValue);
-    console.log(operator);
-    console.log(display.textContent);
+    console.log(`left : ${initialValue}`);
+    console.log(`operator : ${operator}`);
+    console.log(`right : ${display.textContent}`);
     if(display.textContent == 'ERROR'){
         clearDisplay();
         return;

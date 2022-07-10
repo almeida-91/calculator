@@ -51,6 +51,7 @@ const clearbutton = document.getElementById(`clear`);
 const history = document.getElementById(`history`);
 const equals = document.getElementById(`result`);
 const decimal = document.getElementById(`decimal`);
+const backspace = document.getElementById(`backspace`);
 let result = NaN;
 let initialValue = '';
 let operator = '';
@@ -152,4 +153,8 @@ decimal.addEventListener(`click`, function (e){
     if(!isDecimal(display.textContent)){
         display.textContent += `.`;
     }       
+})
+
+backspace.addEventListener(`click`, function(){
+    display.textContent = display.textContent.slice(0,-1);
 })

@@ -133,7 +133,7 @@ function getResult(){
         clearDisplay();
     } else {
         result = operate(operator.toString(),initialValue,display.textContent);
-        result = result.toFixed(5);
+        if(isDecimal(result.toString())) result = result.toFixed(5);
         display.textContent = result;
         initialValue = '';
         result = display.textContent;
